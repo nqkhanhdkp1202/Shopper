@@ -1,13 +1,17 @@
 import { lazy } from "react"
-import { AUTH_PATH, PRODUCT_DETAIL_PATH, PRODUCT_PATH } from "./config/path"
+import { ABOUT_PATH, ACCOUNT_PATH, AUTH_PATH, BLOG_DETAIL_PATH, BLOG_PATH, PRODUCT_DETAIL_PATH, PRODUCT_PATH } from "./config/path"
 import MainLayout from "./layouts/MainLayout"
 import Page404 from "./pages/404"
+import About from "./pages/about"
+import BlogDetail from "./pages/blog-detail"
 import ProductList from "./pages/product"
 import Shop from "./pages/product"
 import ProductDetail from "./pages/product/[slug]"
 
 const Home = lazy(() => import('./pages/index'))
-const Authen = lazy(() => import('./pages/Authen'))
+const Authen = lazy(() => import('./pages/auth'))
+const Account = lazy(() => import('./pages/account/index'))
+const Blog = lazy(() => import('./pages/blog'))
 const routers = [
     {
         element: <MainLayout />,
@@ -27,6 +31,26 @@ const routers = [
             {
                 path: AUTH_PATH,
                 element: <Authen />
+            },
+            {
+                path: ACCOUNT_PATH,
+                element: <Account />
+            },
+            {
+                path: ABOUT_PATH,
+                element: <About />
+            },
+            {
+                path: BLOG_PATH,
+                element: <Blog />,
+            },
+            {
+                path: BLOG_DETAIL_PATH,
+                element: <BlogDetail />,
+            },
+            {
+                path: "*",
+                element: <Page404 />
             }
         ]
     }

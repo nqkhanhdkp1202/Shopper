@@ -6,7 +6,11 @@ import productServices from '../../services/productServices'
 
 export default function ProductList() {
 
-    const { data: products, loading, error } = useQuery(() => productServices.getProducts(), [])
+    const { data: products, loading, error, paginate } = useQuery(() => productServices.getProducts(), [])
+
+    if (loading) {
+        return <p>Loading ...</p>
+    }
 
     return (
         <section className="py-11">
@@ -740,7 +744,7 @@ export default function ProductList() {
                     </div>
                 </div>
                 {/* Pagination */}
-                <Paginate />
+                <Paginate totalPage={paginate.totalPage} />
             </div>
         </section >
     )

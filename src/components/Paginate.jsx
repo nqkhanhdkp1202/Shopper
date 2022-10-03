@@ -6,7 +6,6 @@ export default function Paginate({ totalPage }) {
     const { search } = useLocation();
     const searchURL = new URLSearchParams(search).get('page')
 
-
     return (
         <nav className="d-flex justify-content-center justify-content-md-end">
             <ul className="pagination pagination-sm text-gray-400">

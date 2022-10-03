@@ -18,25 +18,16 @@ export default function Authen() {
                                     <div className="row">
                                         <div className="col-12">
                                             {/* Email */}
-                                            <div className="form-group">
-                                                {/* <label className="sr-only" htmlFor="loginEmail">
-                                                    Email Address *
-                                                </label>
-                                                <input className="form-control form-control-sm" id="loginEmail" type="email" placeholder="Email Address *" required /> */}
-                                                <Input
-                                                    placeholder="Email Address*"
-                                                    required
-                                                />
-                                            </div>
+
+                                            <Input
+                                                placeholder="Email Address*"
+                                            />
                                         </div>
                                         <div className="col-12">
                                             {/* Password */}
-                                            <div className="form-group">
-                                                <Input
-                                                    placeholder="Password*"
-                                                    required
-                                                />
-                                            </div>
+                                            <Input
+                                                placeholder="Password*"
+                                            />
                                         </div>
                                         <div className="col-12 col-md">
                                             {/* Remember */}
@@ -78,48 +69,19 @@ export default function Authen() {
                                     <div className="row">
                                         <div className="col-12">
                                             {/* Email */}
-                                            <div className="form-group">
-                                                <label className="sr-only" htmlFor="registerFirstName">
-                                                    First Name *
-                                                </label>
-                                                <input className="form-control form-control-sm" id="registerFirstName" type="text" placeholder="First Name *" required />
-                                            </div>
+                                            <Input placeholder="Full name *" />
                                         </div>
                                         <div className="col-12">
                                             {/* Email */}
-                                            <div className="form-group">
-                                                <label className="sr-only" htmlFor="registerLastName">
-                                                    Last Name *
-                                                </label>
-                                                <input className="form-control form-control-sm" id="registerLastName" type="text" placeholder="Last Name *" required />
-                                            </div>
-                                        </div>
-                                        <div className="col-12">
-                                            {/* Email */}
-                                            <div className="form-group">
-                                                <label className="sr-only" htmlFor="registerEmail">
-                                                    Email Address *
-                                                </label>
-                                                <input className="form-control form-control-sm" id="registerEmail" type="email" placeholder="Email Address *" required />
-                                            </div>
+                                            <Input placeholder="Email *" type="email" />
                                         </div>
                                         <div className="col-12 col-md-6">
                                             {/* Password */}
-                                            <div className="form-group">
-                                                <label className="sr-only" htmlFor="registerPassword">
-                                                    Password *
-                                                </label>
-                                                <input className="form-control form-control-sm" id="registerPassword" type="password" placeholder="Password *" required />
-                                            </div>
+                                            <Input placeholder="Password *" type="password" />
                                         </div>
                                         <div className="col-12 col-md-6">
                                             {/* Password */}
-                                            <div className="form-group">
-                                                <label className="sr-only" htmlFor="registerPasswordConfirm">
-                                                    Confirm Password *
-                                                </label>
-                                                <input className="form-control form-control-sm" id="registerPasswordConfirm" type="password" placeholder="Confrm Password *" required />
-                                            </div>
+                                            <Input placeholder="Confirm Password *" type="password" />
                                         </div>
                                         <div className="col-12 col-md-auto">
                                             {/* Link */}

@@ -20,11 +20,17 @@ const Label = styled.label`
 function Input({ error, label, required, placeholder, type = 'text', ...props }, ref) {
     return (
         <>
-            <Label>
-                <p>{label}</p>
-                <input className='form-control form-control-sm' ref={ref} type={type} placeholder={placeholder} {...props} />
-                {error && <ErrorText>{error}</ErrorText>}
-            </Label>
+            <div className="form-group">
+                {
+                    label && <label>
+                        {label}
+                        {
+                            required && <span> *</span>
+                        }
+                    </label>
+                }
+                <input className="form-control form-control-sm" type={type} placeholder={placeholder} required />
+            </div>
         </>
     )
 }

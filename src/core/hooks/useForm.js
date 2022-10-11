@@ -12,10 +12,20 @@ export const useForm = (rules) => {
         return Object.keys(errorObj).length === 0
     }
 
+    const register = (name) => {
+        return {
+            defaultValue: form[name],
+            onChange: (ev) => form[name] = ev.currentTarget.value,
+            error: error[name]
+        }
+    }
+
+
     return {
         form,
         setForm,
         error,
-        validate: _validate
+        validate: _validate,
+        register
     }
 }

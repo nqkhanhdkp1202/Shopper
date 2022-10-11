@@ -1,4 +1,7 @@
 import React from 'react'
+import useQuery from '../core/hooks/useQuery'
+
+const { user } = useQuery
 
 export default function Header() {
     return (

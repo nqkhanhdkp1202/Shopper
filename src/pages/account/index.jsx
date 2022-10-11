@@ -1,7 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 import Input from '../../components/Input'
+import useQuery from '../../core/hooks/useQuery'
 
 export default function Account() {
+
+    const { user } = useSelector(store => store.authReducer)
+
+    if (!user) {
+        return <Navigate to="/auth" />
+    }
+
     return (
         <section className="pt-7 pb-12">
             <div className="container">

@@ -4,14 +4,13 @@ import MainLayout from "./layouts/MainLayout"
 import Page404 from "./pages/404"
 import About from "./pages/about"
 import BlogDetail from "./pages/blog-detail"
-import ProductList from "./pages/product"
-import Shop from "./pages/product"
-import ProductDetail from "./pages/product/[slug]"
+import ProductDetail from './pages/shop/[slug]'
 
 const Home = lazy(() => import('./pages/index'))
 const Authen = lazy(() => import('./pages/auth'))
 const Account = lazy(() => import('./pages/account/index'))
 const Blog = lazy(() => import('./pages/blog'))
+const ProductList = lazy(() => import('./pages/shop'))
 const routers = [
     {
         element: <MainLayout />,

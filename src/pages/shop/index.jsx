@@ -2,16 +2,18 @@ import React from 'react'
 import Paginate from '../../components/Paginate'
 import ProductCard from '../../components/ProductCard'
 import useQuery from '../../core/hooks/useQuery'
-import productServices from '../../services/productServices'
+import { Skeleton } from 'antd'
+import productServices from '../../services/product.services'
+import { useLocation } from 'react-router-dom'
+import useScrollTop from '../../core/hooks/useScrollTop'
 
 export default function ProductList() {
+    const { search } = useLocation();
+    const searchURL = new URLSearchParams(search).get('page')
+    let currentPage = parseInt(searchURL || '1')
+    useScrollTop([currentPage])
 
-    const { data: products, loading, error, paginate } = useQuery(() => productServices.getProducts(), [])
-
-    if (loading) {
-        return <p>Loading ...</p>
-    }
-
+    const { data: products, loading, error, paginate } = useQuery(() => productServices.getProducts(`?page=${currentPage}`), [currentPage])
     return (
         <section className="py-11">
             <div className="container">
@@ -739,7 +741,10 @@ export default function ProductList() {
                         {/* Products */}
                         {/* Card */}
                         <div className="row">
-                            {products && products.map((e) => <ProductCard key={e.id} {...e} />)}
+                            {
+                                loading ? <p>Loading ...</p>
+                                    : products.map((e) => <ProductCard key={e.id} {...e} />)
+                            }
                         </div>
                     </div>
                 </div>

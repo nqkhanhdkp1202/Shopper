@@ -1,7 +1,35 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import Button from '../components/Button';
 import Input from '../components/Input'
+import { useForm } from '../core/hooks/useForm'
+import { loginAction } from '../store/authReducer';
 
 export default function Authen() {
+
+    const dispatch = useDispatch()
+
+
+    const loginForm = useForm(
+        {
+            email: [
+                { required: true },
+                { regexp: 'email', message: 'Email không đúng định dạng' }
+            ],
+            password: [
+                { required: true },
+                { min: 6, max: 32 },
+                // { regexp: 'password', message: 'Mật khẩu phải bao gồm số, chữ, ký tự đặc biệt' }
+            ]
+        }
+    );
+
+    const onLogin = (ev) => {
+        ev.preventDefault();
+        if (loginForm.validate()) {
+            dispatch(loginAction(loginForm.form))
+        }
+    }
 
     return (
         <section className="py-12">
@@ -14,19 +42,20 @@ export default function Authen() {
                                 {/* Heading */}
                                 <h6 className="mb-7">Returning Customer</h6>
                                 {/* Form */}
-                                <form>
+                                <form onSubmit={onLogin}>
                                     <div className="row">
                                         <div className="col-12">
                                             {/* Email */}
-
                                             <Input
                                                 placeholder="Email Address*"
+                                                {...loginForm.register('email')}
                                             />
                                         </div>
                                         <div className="col-12">
                                             {/* Password */}
                                             <Input
-                                                placeholder="Password*"
+                                                placeholder="Password*" type='password'
+                                                {...loginForm.register('password')}
                                             />
                                         </div>
                                         <div className="col-12 col-md">
@@ -49,9 +78,7 @@ export default function Authen() {
                                         </div>
                                         <div className="col-12">
                                             {/* Button */}
-                                            <button className="btn btn-sm btn-dark" type="submit">
-                                                Sign In
-                                            </button>
+                                            <Button children='Sign In' />
                                         </div>
                                     </div>
                                 </form>
@@ -69,7 +96,9 @@ export default function Authen() {
                                     <div className="row">
                                         <div className="col-12">
                                             {/* Email */}
-                                            <Input placeholder="Full name *" />
+                                            <Input
+                                                placeholder="Full name *"
+                                            />
                                         </div>
                                         <div className="col-12">
                                             {/* Email */}
@@ -103,9 +132,7 @@ export default function Authen() {
                                         </div>
                                         <div className="col-12">
                                             {/* Button */}
-                                            <button className="btn btn-sm btn-dark" type="submit">
-                                                Register
-                                            </button>
+                                            <Button children='Register' />
                                         </div>
                                     </div>
                                 </form>

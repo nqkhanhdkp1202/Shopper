@@ -11,7 +11,7 @@ const useQuery = (callbackPromise, dependencyList) => {
         callbackPromise()
             .then(res => {
                 setData(res.data)
-                setPaginate(res.paginate)
+                setPaginate(res.paginate || {})
             })
             .catch((err) => {
                 setError(err)

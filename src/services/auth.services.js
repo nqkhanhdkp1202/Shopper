@@ -10,3 +10,5 @@ const authServices = {
         return api.post('/refresh-token', data)
     }
 }
+
+export default authServices

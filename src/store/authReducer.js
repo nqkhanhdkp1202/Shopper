@@ -1,3 +1,6 @@
+import { setToken, setUser } from '../core/utils'
+import authServices from '../services/auth.services'
+import userServices from '../services/user.services'
 import { AUTH_LOGIN, AUTH_LOGOUT } from './type'
 
 let user = localStorage.getItem('user')
@@ -8,28 +11,17 @@ const initialState = {
     user
 }
 
-export const loginAction = (object) => {
+export const loginAction = (data) => {
     return async (dispatch) => {
         try {
-            const result = await authService.login(object.form)
-            if (result.data) {
-                localStorage.setItem('token', JSON.stringify(result.data))
-
-                const user = await userService.getInfo()
-                if (user.data) {
-                    localStorage.setItem('user', JSON.stringify(user.data))
-
-                    // setUser(user.data)
-                    dispatch({ type: AUTH_LOGIN, payload: user.data })
-                    object.success()
-                    // setIsOpenLoginModal(false)
-                }
-                // 
+            const token = await authServices.login(data )
+            const user = await userServices.getInfo()
+            setToken(token.data)
+            setUser(user.data)
+            dispatch({ type: AUTH_LOGIN, payload: user.data })
             }
-        } catch (err) {
-            object.error(err)
-        } finally {
-            object.finally()
+        catch (err) {
+            console.log(err);
         }
     }
 }
@@ -44,6 +36,7 @@ export default function authReducer(state = initialState, action) {
             }
         case AUTH_LOGIN:
             return {
+                ...state,
                 user: action.payload
             }
         default:

@@ -1,9 +1,22 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import useQuery from '../core/hooks/useQuery'
+import usePage from '../hooks/usePage'
+import { toggleSearchDrawerAction } from '../store/pageReducer'
 
 const { user } = useQuery
 
 export default function Header() {
+
+    const {openSearchDrawer} = usePage()
+    const dispatch = useDispatch()
+
+    const onOpenSearch = (ev) => {
+        ev.preventDefault();
+        dispatch(toggleSearchDrawerAction());
+    }
+
+
     return (
         <div>
             {/* NAVBAR */}
@@ -101,7 +114,7 @@ export default function Header() {
             <nav className="navbar navbar-expand-lg navbar-light bg-white">
                 <div className="container">
                     {/* Brand */}
-                    <a className="navbar-brand" href="./overview.html">
+                    <a className="navbar-brand" href="/">
                         Shopper.
                     </a>
                     {/* Toggler */}
@@ -540,7 +553,7 @@ export default function Header() {
                         {/* Nav */}
                         <ul className="navbar-nav flex-row">
                             <li className="nav-item">
-                                <a className="nav-link" data-toggle="modal" href="#modalSearch">
+                                <a className="nav-link" onClick={onOpenSearch} data-toggle="modal">
                                     <i className="fe fe-search" />
                                 </a>
                             </li>

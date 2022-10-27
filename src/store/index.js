@@ -5,8 +5,8 @@ import pageReducer from './pageReducer'
 
 
 let reducers = combineReducers({
-    authReducer,
-    pageReducer
+    auth: authReducer,
+    page: pageReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunk))

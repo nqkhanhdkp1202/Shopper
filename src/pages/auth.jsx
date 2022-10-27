@@ -27,7 +27,7 @@ export default function Authen() {
     const onLogin = (ev) => {
         ev.preventDefault();
         if (loginForm.validate()) {
-            dispatch(loginAction(loginForm.form))
+            dispatch(loginAction(),loginForm)
         }
     }
 
@@ -78,7 +78,7 @@ export default function Authen() {
                                         </div>
                                         <div className="col-12">
                                             {/* Button */}
-                                            <Button children='Sign In' />
+                                            <Button>Sign In</Button>
                                         </div>
                                     </div>
                                 </form>
@@ -132,7 +132,7 @@ export default function Authen() {
                                         </div>
                                         <div className="col-12">
                                             {/* Button */}
-                                            <Button children='Register' />
+                                            <Button>Register</Button>
                                         </div>
                                     </div>
                                 </form>
